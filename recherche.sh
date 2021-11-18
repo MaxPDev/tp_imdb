@@ -19,11 +19,31 @@ titleRatingExec="cat title.rating.tsv "
 
 
 
-for arg in $critere
-do
-	firstChar=$(echo $arg | cut -c 1)
-	if [ firstChar = "-" ]
-	then
-		nameExec += "| grep -iv $arg" 
-	
+# regex dans case à faire
+case $param in
+	"-r")
+		#for arg in $critere
+		#do
+        	#	firstChar=$(echo $arg | cut -c 1)
+        	#	if [ firstChar = "-" ]
+        	#	then
+                #		$nameExec += "| grep -iv $arg"
+        	#	else
+                #		$nameExec += "| grep -i $arg"
+        	#	fi
+		#done
+		nameExec+="| grep -i $critere"
+		$(nameExec) 
+		;;
+	"-n")
+		echo "note"
+		;;
+	"-t")
+		echo "titre"
+		;;
+	"-a")
+		echo "année"
+		;;
+esac
+
 
